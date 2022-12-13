@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "906903011320",
+    "firebase_url": "https://team7cafe-default-rtdb.firebaseio.com",
+    "project_id": "team7cafe",
+    "storage_bucket": "team7cafe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906903011320:android:776488cb0f8ba7958d600d",
+        "android_client_info": {
+          "package_name": "project.app.space.team7cafeserver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906903011320-k2a6fnsvkptnqr27ivhjd49c9hpbt8d0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHZCX74bg2PqzkZSzEAoj8gJcjP9uvHeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906903011320-k2a6fnsvkptnqr27ivhjd49c9hpbt8d0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906903011320:android:e3588b95871a51408d600d",
+        "android_client_info": {
+          "package_name": "project.app.team7cafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906903011320-k2a6fnsvkptnqr27ivhjd49c9hpbt8d0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHZCX74bg2PqzkZSzEAoj8gJcjP9uvHeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906903011320-k2a6fnsvkptnqr27ivhjd49c9hpbt8d0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
