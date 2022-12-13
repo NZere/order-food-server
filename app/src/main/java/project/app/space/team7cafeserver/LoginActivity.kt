@@ -64,8 +64,8 @@ class LoginActivity : AppCompatActivity() {
                         if (it.exists()) {
                             var userType = it.child("userType").value.toString()
                             if (userType == "staff") {
-//                                val intent = Intent(this, CategoryMenuActivity::class.java)
-//                                startActivity(intent)
+                                val intent = Intent(this, CategoryMenuActivity::class.java)
+                                startActivity(intent)
 
                                 Toast.makeText(
                                     baseContext, "Authentication successfully.",
