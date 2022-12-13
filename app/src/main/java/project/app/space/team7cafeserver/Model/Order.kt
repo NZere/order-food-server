@@ -1,4 +1,4 @@
-package project.app.team7cafe.Model
+package project.app.space.team7cafeserver.Model
 
 open class Order {
     var ID: Int? = null

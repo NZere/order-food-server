@@ -1,9 +1,11 @@
 package project.app.space.team7cafeserver
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -14,14 +16,16 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.jaredrummler.materialspinner.MaterialSpinner
 import project.app.space.team7cafeserver.Interface.ItemClickListener
 import project.app.space.team7cafeserver.ViewHolder.OrderViewHolder
-import project.app.team7cafe.Model.OrderRequest
+import project.app.space.team7cafeserver.Model.OrderRequest
 
 class OrderStatusChangeActivity : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var layoutManager: RecyclerView.LayoutManager
+    lateinit var materialSpinner: MaterialSpinner
 
     val database = FirebaseDatabase.getInstance()
     private var auth: FirebaseAuth = Firebase.auth
@@ -92,24 +96,50 @@ class OrderStatusChangeActivity : AppCompatActivity() {
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        if (item.intent.equals("Update")){
+        if (item.title.equals("Update")){
             showUpdateDialog(adapter.getRef(item.order).key, adapter.getItem(item.order))
         }
-        else if(item.intent.equals("Delete")){
+        else if(item.title.equals("Delete")){
             deleteOrder(adapter.getRef(item.order).key)
         }
         return super.onContextItemSelected(item)
     }
 
     private fun deleteOrder(key: String?) {
-
+        request.child(key!!).removeValue()
     }
 
     private fun showUpdateDialog(key: String?, item: OrderRequest) {
+        val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this@OrderStatusChangeActivity)
+        alertDialog.setTitle("Update Order")
+        alertDialog.setMessage("Please change the status")
+
+        var inflater: LayoutInflater = this.layoutInflater
+        val view:View=inflater.inflate(R.layout.update_order, null)
+
+        materialSpinner = view.findViewById(R.id.statusSpinner)
+        materialSpinner.setItems("in queue", "in process", "gave it to waiter", "done")
+
+        alertDialog.setView(view)
+
+        val localKey = key
+        alertDialog.setPositiveButton("YES"
+        ) { dialog, which ->
+            dialog.dismiss()
+            item.status = convertStatusToCode(materialSpinner.selectedIndex.toString())
+            request.child(localKey!!).setValue(item)
+
+        }
+        alertDialog.setNegativeButton("NO"
+        ){
+            dialog, which ->
+            dialog.dismiss()
+        }
+        alertDialog.show()
 
     }
 
-    fun convertCodeToStatus(status: String): String {
+    open fun convertCodeToStatus(status: String): String {
         when (status) {
             "0" -> {
                 return "in queue"
@@ -122,6 +152,24 @@ class OrderStatusChangeActivity : AppCompatActivity() {
             }
             "3" -> {
                 return "done"
+            }
+        }
+        return ""
+    }
+
+    fun convertStatusToCode(status: String): String {
+        when (status) {
+            "in queue"-> {
+                return "0"
+            }
+            "in process" -> {
+                return "1"
+            }
+            "gave it to waiter" -> {
+                return "2"
+            }
+            "done" -> {
+                return "3"
             }
         }
         return ""

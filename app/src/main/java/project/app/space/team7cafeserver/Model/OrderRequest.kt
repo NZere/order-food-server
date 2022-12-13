@@ -1,4 +1,4 @@
-package project.app.team7cafe.Model
+package project.app.space.team7cafeserver.Model
 
 class OrderRequest {
     var user_id: String? = null
