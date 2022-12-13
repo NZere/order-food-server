@@ -72,12 +72,12 @@ class CategoryMenuActivity() : AppCompatActivity() {
                     startActivity(intent)
                     return@setNavigationItemSelectedListener true
                 }
-                R.id.nav_cart -> {
-//                    val intent=Intent(this@CategoryMenuActivity, CartActivity::class.java)
+                R.id.nav_orders_pending-> {
+                    val intent=Intent(this@CategoryMenuActivity, OrderStatusChangeActivity::class.java)
                     startActivity(intent)
                     return@setNavigationItemSelectedListener true
                 }
-                R.id.nav_orders -> {
+                R.id.nav_orders_completed -> {
 //                    val intent=Intent(this@CategoryMenuActivity, OrderListActivity::class.java)
                     startActivity(intent)
                     return@setNavigationItemSelectedListener true
@@ -125,7 +125,7 @@ class CategoryMenuActivity() : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_categories,R.id.nav_cart,R.id.nav_coupons, R.id.nav_orders, R.id.nav_sign_out
+                R.id.nav_categories, R.id.nav_orders_pending,R.id.nav_orders_completed,R.id.nav_coupons, R.id.nav_sign_out
             ), drawerLayout
         )
     }
