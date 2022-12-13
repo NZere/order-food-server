@@ -21,7 +21,7 @@
         android:id="@+id/button_login"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="310dp"
         android:background="@drawable/go_main_button_ui"
         android:text="Log In"
         android:textAllCaps="false"
@@ -32,21 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_register"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="340dp"
-        android:background="@drawable/go_button_ui"
-        android:text="Register"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:textColor="#FF6600"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/food_main"
