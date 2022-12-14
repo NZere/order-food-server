@@ -32,7 +32,6 @@ import com.squareup.picasso.Picasso
 import project.app.space.team7cafeserver.databinding.ActivityCategoryMenuBinding
 import project.app.space.team7cafeserver.Interface.ItemClickListener
 import project.app.space.team7cafeserver.Model.Category
-import project.app.space.team7cafeserver.Service.ListenOrder
 import project.app.space.team7cafeserver.ViewHolder.MenuViewHolder
 
 class CategoryMenuActivity() : AppCompatActivity() {
@@ -121,9 +120,7 @@ class CategoryMenuActivity() : AppCompatActivity() {
 
         loadMenu()
 
-        //Register Service
-        var service:Intent = Intent(this@CategoryMenuActivity, ListenOrder::class.java)
-        startService(service)
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

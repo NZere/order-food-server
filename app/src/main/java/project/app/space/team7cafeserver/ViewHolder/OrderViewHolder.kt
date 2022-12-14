@@ -14,6 +14,7 @@ class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.
     var txtOrderTotal: TextView
     private lateinit var itemClickListener: ItemClickListener
 
+
     fun setItemClickListener(itemClickListener: ItemClickListener){
         this.itemClickListener=itemClickListener
     }
@@ -25,10 +26,11 @@ class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.
         txtOrderTable = itemView.findViewById(R.id.order_item_table)
         txtOrderTotal = itemView.findViewById(R.id.order_item_total)
         itemView.setOnClickListener(this)
+        itemView.setOnCreateContextMenuListener(this)
     }
 
     override fun onClick(v: View) {
-        itemClickListener!!.onClick(v, adapterPosition, false)
+        itemClickListener!!.onClick(v, adapterPosition, true)
     }
 
     override fun onCreateContextMenu(

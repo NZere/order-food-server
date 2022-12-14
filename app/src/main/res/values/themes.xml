@@ -22,4 +22,10 @@
     <style name="Theme.Team7cafeserver.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Team7cafeserver.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorPrimary">@android:color/black</item>
+    </style>
+
 </resources>

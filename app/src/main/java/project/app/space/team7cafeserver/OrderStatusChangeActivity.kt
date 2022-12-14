@@ -95,6 +95,7 @@ class OrderStatusChangeActivity : AppCompatActivity() {
 
     }
 
+
     override fun onContextItemSelected(item: MenuItem): Boolean {
         if (item.title.equals("Update")){
             showUpdateDialog(adapter.getRef(item.order).key, adapter.getItem(item.order))
@@ -110,7 +111,7 @@ class OrderStatusChangeActivity : AppCompatActivity() {
     }
 
     private fun showUpdateDialog(key: String?, item: OrderRequest) {
-        val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this@OrderStatusChangeActivity)
+        val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this@OrderStatusChangeActivity, R.style.AlertDialogTheme)
         alertDialog.setTitle("Update Order")
         alertDialog.setMessage("Please change the status")
 
@@ -140,39 +141,49 @@ class OrderStatusChangeActivity : AppCompatActivity() {
     }
 
     open fun convertCodeToStatus(status: String): String {
+        var ans=status
         when (status) {
             "0" -> {
-                return "in queue"
+                ans = "in queue"
+                return ans
             }
             "1" -> {
-                return "in process"
+                ans ="in process"
+                return ans
             }
             "2" -> {
-                return "gave it to waiter"
+                ans = "gave it to waiter"
+                return ans
             }
             "3" -> {
-                return "done"
+                ans = "done"
+                return ans
             }
         }
-        return ""
+        return ans
     }
 
     fun convertStatusToCode(status: String): String {
+        var ans=status
         when (status) {
             "in queue"-> {
-                return "0"
+                ans =  "0"
+                return ans
             }
             "in process" -> {
-                return "1"
+                ans = "1"
+                return ans
             }
             "gave it to waiter" -> {
-                return "2"
+                ans = "2"
+                return ans
             }
             "done" -> {
-                return "3"
+                ans = "3"
+                return ans
             }
         }
-        return ""
+        return ans
     }
 
 }
