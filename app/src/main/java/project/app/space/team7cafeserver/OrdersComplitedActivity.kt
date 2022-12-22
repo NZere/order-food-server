@@ -1,16 +1,16 @@
 package project.app.space.team7cafeserver
 
-import android.content.DialogInterface
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.android.gms.common.internal.service.Common
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -18,10 +18,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.jaredrummler.materialspinner.MaterialSpinner
 import project.app.space.team7cafeserver.Interface.ItemClickListener
-import project.app.space.team7cafeserver.ViewHolder.OrderViewHolder
 import project.app.space.team7cafeserver.Model.OrderRequest
+import project.app.space.team7cafeserver.ViewHolder.OrderViewHolder
 
-class OrderStatusChangeActivity : AppCompatActivity() {
+class OrdersComplitedActivity : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var layoutManager: RecyclerView.LayoutManager
@@ -44,7 +44,7 @@ class OrderStatusChangeActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.listOrder)
         recyclerView.setHasFixedSize(true)
 //        layoutManager = LinearLayoutManager(this)
-        layoutManager = WrapContentLayoutManager(this@OrderStatusChangeActivity, LinearLayoutManager.VERTICAL,false)
+        layoutManager = WrapContentLayoutManager(this@OrdersComplitedActivity, LinearLayoutManager.VERTICAL,false)
         recyclerView.layoutManager = layoutManager
 
         loadOrders(auth.currentUser?.uid)
@@ -53,7 +53,7 @@ class OrderStatusChangeActivity : AppCompatActivity() {
 
     private fun loadOrders(uid: String?) {
         val options = FirebaseRecyclerOptions.Builder<OrderRequest>()
-            .setQuery(request.orderByChild("status").endBefore("3"), OrderRequest::class.java)
+            .setQuery(request.orderByChild("status").equalTo("3"), OrderRequest::class.java)
             .setLifecycleOwner(this)
             .build()
 
@@ -111,12 +111,12 @@ class OrderStatusChangeActivity : AppCompatActivity() {
     }
 
     private fun showUpdateDialog(key: String?, item: OrderRequest) {
-        val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this@OrderStatusChangeActivity, R.style.AlertDialogTheme)
+        val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this@OrdersComplitedActivity, R.style.AlertDialogTheme)
         alertDialog.setTitle("Update Order")
         alertDialog.setMessage("Please change the status")
 
         var inflater: LayoutInflater = this.layoutInflater
-        val view:View=inflater.inflate(R.layout.update_order, null)
+        val view: View =inflater.inflate(R.layout.update_order, null)
 
         materialSpinner = view.findViewById(R.id.statusSpinner)
         materialSpinner.setItems("in queue", "in process", "gave it to waiter", "done")
@@ -133,7 +133,7 @@ class OrderStatusChangeActivity : AppCompatActivity() {
         }
         alertDialog.setNegativeButton("NO"
         ){
-            dialog, which ->
+                dialog, which ->
             dialog.dismiss()
         }
         alertDialog.show()

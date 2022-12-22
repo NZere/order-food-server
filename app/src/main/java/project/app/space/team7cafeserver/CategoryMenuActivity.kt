@@ -78,12 +78,12 @@ class CategoryMenuActivity() : AppCompatActivity() {
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.nav_orders_completed -> {
-//                    val intent=Intent(this@CategoryMenuActivity, OrderListActivity::class.java)
+                    val intent=Intent(this@CategoryMenuActivity, OrdersComplitedActivity::class.java)
                     startActivity(intent)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.nav_coupons -> {
-//                    val intent=Intent(this@CategoryMenuActivity, CouponActivity::class.java)
+                    val intent=Intent(this@CategoryMenuActivity, CouponActivity::class.java)
                     startActivity(intent)
                     return@setNavigationItemSelectedListener true
                 }

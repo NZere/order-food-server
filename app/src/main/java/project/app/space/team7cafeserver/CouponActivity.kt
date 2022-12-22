@@ -52,7 +52,7 @@ class CouponActivity : AppCompatActivity() {
 
     fun loadCoupons(uid: String?) {
         val options = FirebaseRecyclerOptions.Builder<Coupon>()
-            .setQuery(coupons.orderByChild("user_id").equalTo(auth.currentUser?.uid), Coupon::class.java)
+            .setQuery(coupons, Coupon::class.java)
             .setLifecycleOwner(this)
             .build()
 
