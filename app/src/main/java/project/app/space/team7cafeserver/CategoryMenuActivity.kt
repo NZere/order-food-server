@@ -157,7 +157,7 @@ class CategoryMenuActivity() : AppCompatActivity() {
 //                            intent.putExtra("CategoryId", adapter.getRef(position).key)
 //                            startActivity(intent)
 
-                            Toast.makeText(baseContext,""+adapter.getRef(position).key,Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(baseContext,""+adapter.getRef(position).key,Toast.LENGTH_SHORT).show()
                         }
                     }
                     )
